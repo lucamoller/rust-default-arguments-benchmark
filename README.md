@@ -12,7 +12,7 @@ cargo run --release
 
 ## Sample result obtained from a run in my computer
 
-The performance of the two implementations seem indistinguishable when running in my CPU.
+The performance of the two implementations initially seemed indistinguishable when running in my CPU.
 
 ```
 (default arguments)  mean runtime: 59.268ms, std_dev: 3.343ms
