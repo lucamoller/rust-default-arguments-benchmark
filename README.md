@@ -4,7 +4,7 @@ This is a simple benchmark to evaluate the performance impact of using structs t
 
 ## How to run the benchmark
 
-It's important to run the benchmark in release mode, to allow the compiler to do its optimizations magic. Otherwise the default arguments implementation gets substantially penalized.
+It's important to run the benchmark in release mode, to allow the compiler to do its optimization magic. Otherwise the default arguments implementation gets substantially penalized.
 
 ```
 cargo run --release
