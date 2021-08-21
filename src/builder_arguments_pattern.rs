@@ -11,11 +11,11 @@ const OPT2_DEFAULT_VALUE: &str = "abc";
 const OPT3_DEFAULT_VALUE: bool = false;
 
 struct MyFuncArgsBuilder<'a> {
-  pub req1: &'a str,
-  pub req2: &'a str,
-  pub opt1: Option<i32>,
-  pub opt2: Option<&'a str>,
-  pub opt3: Option<bool>,
+  req1: &'a str,
+  req2: &'a str,
+  opt1: Option<i32>,
+  opt2: Option<&'a str>,
+  opt3: Option<bool>,
 }
 
 impl<'a> MyFuncArgsBuilder<'a> {
