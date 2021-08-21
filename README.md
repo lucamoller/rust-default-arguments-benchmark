@@ -12,16 +12,20 @@ cargo run --release
 
 ## Sample result obtained from a run in my computer
 
-The performance of the two implementations initially seemed indistinguishable when running in my CPU:
+The performance of the inlined my_func implementations initially seemed indistinguishable when running in my CPU:
 
 ```
-(default arguments)  mean runtime: 59.268ms, std_dev: 3.343ms
-(explicit arguments) mean runtime: 59.351ms, std_dev: 3.340ms
+Agregated results: (my_func inlined)
+(default arguments)  mean runtime: 59.839ms, std_dev: 1.892ms
+(explicit arguments) mean runtime: 59.886ms, std_dev: 1.757ms
+(builder arguments)  mean runtime: 59.868ms, std_dev: 2.238ms
 ```
 
-If we prevent the functions to get inlined though (by adding ```#[inline(never)]``` before the ```my_func``` and ```my_func2``` definitions), the default arguments implementation performance gets heavily impacted:
+If we prevent the functions to get inlined though (by adding ```#[inline(never)]``` before the ```my_func``` and ```my_func2``` definitions), the default arguments and builder implementations performances get heavily impacted:
 
 ```
-(default arguments)  mean runtime: 883.652ms, std_dev: 31.416ms
-(explicit arguments) mean runtime: 167.352ms, std_dev: 7.446ms
+Agregated results: (my_func never inlined)
+(default arguments)  mean runtime: 832.429ms, std_dev: 37.043ms
+(explicit arguments) mean runtime: 192.341ms, std_dev: 8.229ms
+(builder arguments)  mean runtime: 825.382ms, std_dev: 32.820ms
 ```
