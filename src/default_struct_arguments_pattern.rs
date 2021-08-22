@@ -1,3 +1,5 @@
+use crate::common;
+
 pub struct MyFuncArgs<'a> {
   pub req1: &'a str,
   pub req2: &'a str,
@@ -21,20 +23,13 @@ impl<'a> Default for MyFuncOptionalArgs<'a> {
 }
 
 pub fn my_func(args: MyFuncArgs) -> bool {
-  (args.req1.len() % 2 == 0)
-    ^ (args.req2.len() % 2 == 0)
-    ^ (args.optional_args.opt1 % 2 == 0)
-    ^ (args.optional_args.opt2.len() % 2 == 0)
-    ^ args.optional_args.opt3
+  let opt_args = &args.optional_args;
+  common::my_func(args.req1, args.req2, opt_args.opt1, opt_args.opt2, opt_args.opt3)
 }
 
 #[inline(never)]
 pub fn my_func_never_inlined(args: MyFuncArgs) -> bool {
-  (args.req1.len() % 2 == 0)
-    ^ (args.req2.len() % 2 == 0)
-    ^ (args.optional_args.opt1 % 2 == 0)
-    ^ (args.optional_args.opt2.len() % 2 == 0)
-    ^ args.optional_args.opt3
+  my_func(args)
 }
 
 pub fn exercise_my_func_calls(repetitions: i64) -> bool {
@@ -53,7 +48,6 @@ pub fn exercise_my_func_calls(repetitions: i64) -> bool {
         opt1: 456 + (i % 2) as i32,
         opt2: "def",
         opt3: true,
-        ..Default::default()
       },
     });
 
@@ -95,7 +89,6 @@ pub fn exercise_my_func_never_inlined_calls(repetitions: i64) -> bool {
         opt1: 456 + (i % 2) as i32,
         opt2: "def",
         opt3: true,
-        ..Default::default()
       },
     });
 
