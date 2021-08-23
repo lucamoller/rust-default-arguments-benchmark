@@ -1,3 +1,5 @@
+use crate::common;
+
 pub struct MyFuncArgs<'a> {
   req1: &'a str,
   req2: &'a str,
@@ -68,20 +70,12 @@ impl<'a> MyFuncArgsBuilder<'a> {
 }
 
 pub fn my_func(args: MyFuncArgs) -> bool {
-  (args.req1.len() % 2 == 0)
-    ^ (args.req2.len() % 2 == 0)
-    ^ (args.opt1 % 2 == 0)
-    ^ (args.opt2.len() % 2 == 0)
-    ^ args.opt3
+  common::my_func(args.req1, args.req2, args.opt1, args.opt2, args.opt3)
 }
 
 #[inline(never)]
 pub fn my_func_never_inlined(args: MyFuncArgs) -> bool {
-  (args.req1.len() % 2 == 0)
-    ^ (args.req2.len() % 2 == 0)
-    ^ (args.opt1 % 2 == 0)
-    ^ (args.opt2.len() % 2 == 0)
-    ^ args.opt3
+  my_func(args)
 }
 
 pub fn exercise_my_func_calls(repetitions: i64) -> bool {

@@ -1,10 +1,10 @@
-pub fn my_func(req1: &str, req2: &str, opt1: i32, opt2: &str, opt3: bool) -> bool {
-  (req1.len() % 2 == 0) ^ (req2.len() % 2 == 0) ^ (opt1 % 2 == 0) ^ (opt2.len() % 2 == 0) ^ opt3
-}
+use crate::common::my_func;
 
 #[inline(never)]
-pub fn my_func_never_inlined(req1: &str, req2: &str, opt1: i32, opt2: &str, opt3: bool) -> bool {
-  (req1.len() % 2 == 0) ^ (req2.len() % 2 == 0) ^ (opt1 % 2 == 0) ^ (opt2.len() % 2 == 0) ^ opt3
+pub fn my_func_never_inlined(req1: &str, req2: &str, opt1: i32, opt2: &str, opt3: bool)
+    -> bool
+{
+    my_func(req1, req2, opt1, opt2, opt3)
 }
 
 pub fn exercise_my_func_calls(repetitions: i64) -> bool {

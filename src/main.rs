@@ -1,10 +1,7 @@
-mod builder_arguments_pattern;
-mod default_struct_arguments_pattern;
-mod explicit_arguments_pattern;
 use std::time::Instant;
+use mylib::*;
 
 const RUNS: i64 = 20;
-const REPETITIONS_PER_RUN: i64 = 100000000;
 
 fn execute_my_func_benchmark() {
     println!("\nRunning execute_my_func_benchmark...");
